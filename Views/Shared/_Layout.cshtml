@@ -24,6 +24,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Index">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Add">Add Event</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -32,6 +38,8 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
+            <a href="~/Events/Index">Event Index</a>
+            <a href="~/Events/Add">Event Add</a>
         </main>
     </div>
 
