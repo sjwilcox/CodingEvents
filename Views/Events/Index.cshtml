@@ -3,6 +3,10 @@
 <p>
     <a asp-controller="Events" asp-action="Add">Add Event</a>
 </p>
+<p>
+    <a asp-controller="Events" asp-action="Delete">Delete Event</a>
+</p>
+
 
 @if(ViewBag.events.Count == 0)
 {
@@ -12,6 +16,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th scope="col">Id</th>
             <th scope="col">Event</th>
             <th scope="col">Description</th>
         </tr>
@@ -20,10 +25,13 @@
         
             @foreach (Event meeting in ViewBag.events)
             {
-                <tr>
-                    <td>@meeting.Name</td>
-                    
-                </tr>
+        <tr>
+            <td>@meeting.Id</td>
+            <td>@meeting.Name</td>
+            <td>@meeting.Description</td>
+            <td><a asp-controller="Events" asp-action="Edit" asp-route-id="@meeting.Id">Edit Event</a></td>
+
+        </tr>
             }
         
     </tbody>

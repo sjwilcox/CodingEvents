@@ -40,3 +40,5 @@ D:\VS Projects\CodingEvents\obj\Debug\net5.0\CodingEvents.pdb
 D:\VS Projects\CodingEvents\obj\Debug\net5.0\CodingEvents.genruntimeconfig.cache
 D:\VS Projects\CodingEvents\obj\Debug\net5.0\CodingEvents.csproj.CopyComplete
 D:\VS Projects\CodingEvents\obj\Debug\net5.0\Razor\Views\Events\Add.cshtml.g.cs
+D:\VS Projects\CodingEvents\obj\Debug\net5.0\Razor\Views\Events\Delete.cshtml.g.cs
+D:\VS Projects\CodingEvents\obj\Debug\net5.0\Razor\Views\Events\Edit.cshtml.g.cs
