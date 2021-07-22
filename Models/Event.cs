@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,6 +10,10 @@ namespace CodingEvents.Models
     {
         public String Name { get; set; }
         public string Description { get; set; }
+        public string ContactEmail { get; set; }
+        public string EventLocation { get; set; }
+        public int AttendeesTotal { get; set; }
+        public bool Register { get { return true; } }
         public int Id { get; }
         private static int nextId = 1;
 
@@ -18,10 +23,13 @@ namespace CodingEvents.Models
             nextId++;
         }
 
-        public Event(string name, string description) : this()
+        public Event(string name, string description, string contactEmail, string eventLocation, int attendees) : this()
         {
             Name = name;
             Description = description;
+            ContactEmail = contactEmail;
+            EventLocation = eventLocation;
+            AttendeesTotal = attendees;
             
         }
 

@@ -1,4 +1,7 @@
-﻿<h1>Coding Events</h1>
+﻿@using CodingEvents.Models 
+
+@model List<Event>
+<h1>Coding Events</h1>
 
 <p>
     <a asp-controller="Events" asp-action="Add">Add Event</a>
@@ -8,7 +11,7 @@
 </p>
 
 
-@if(ViewBag.events.Count == 0)
+@if(Model.Count == 0)
 {
     <p>No Events Yet!</p>
 }
@@ -19,16 +22,22 @@
             <th scope="col">Id</th>
             <th scope="col">Event</th>
             <th scope="col">Description</th>
+            <th scope="col">Event Location</th>
+            <th scope="col">Number of Attendess</th>
+            <th scope="col">Contact Email</th>
         </tr>
     </thead>
     <tbody>
         
-            @foreach (Event meeting in ViewBag.events)
+            @foreach (Event meeting in Model)
             {
         <tr>
             <td>@meeting.Id</td>
             <td>@meeting.Name</td>
             <td>@meeting.Description</td>
+            <td>@meeting.EventLocation</td>
+            <td>@meeting.AttendeesTotal</td>
+            <td>@meeting.ContactEmail</td>
             <td><a asp-controller="Events" asp-action="Edit" asp-route-id="@meeting.Id">Edit Event</a></td>
 
         </tr>
