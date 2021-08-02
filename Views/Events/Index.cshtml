@@ -22,8 +22,7 @@
             <th scope="col">Id</th>
             <th scope="col">Event</th>
             <th scope="col">Description</th>
-            <th scope="col">Event Location</th>
-            <th scope="col">Number of Attendess</th>
+            <th scope="col">Event Type</th>
             <th scope="col">Contact Email</th>
         </tr>
     </thead>
@@ -35,8 +34,7 @@
             <td>@meeting.Id</td>
             <td>@meeting.Name</td>
             <td>@meeting.Description</td>
-            <td>@meeting.EventLocation</td>
-            <td>@meeting.AttendeesTotal</td>
+            <td>@meeting.Type</td>
             <td>@meeting.ContactEmail</td>
             <td><a asp-controller="Events" asp-action="Edit" asp-route-id="@meeting.Id">Edit Event</a></td>
 

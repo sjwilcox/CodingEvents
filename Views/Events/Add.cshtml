@@ -6,8 +6,8 @@
 
 <h1>Add Event</h1>
 
-<form method="post">
-    <div asp-controller="Events" asp-action"Add" class="form-group">
+<form asp-controller="Events" asp-action="Add"method="post">
+    <div class="form-group">
         <label asp-for="Name"></label>
         <input asp-for="Name" />
         <span asp-validation-for="Name"></span>
@@ -17,21 +17,13 @@
         <input asp-for="Description" />
         <span asp-validation-for="Description"></span>
     </div>
+   
+    
     <div class="form-group">
-        <label asp-for="EventLocation">Event Location</label>
-        <input asp-for="EventLocation" />
-        <span asp-validation-for="EventLocation"></span>
+        <label asp-for="Type">Event Type</label>
+        <select asp-for="Type" asp-items="Model.EventTypes"></select>
     </div>
-    <div class="form-group">
-        <label asp-for="AttendeesTotal">Number of Attendees</label>
-        <input asp-for="AttendeesTotal" />
-        <span asp-validation-for="AttendeesTotal"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Reigster"></label>
-        <input asp-for="Reigster" />
-        <span asp-validation-for="Reigster"></span>
-    </div>
+    
     <div class="form-group">
         <label asp-for="ContactEmail">Contact Email</label>
         <input asp-for="ContactEmail" />

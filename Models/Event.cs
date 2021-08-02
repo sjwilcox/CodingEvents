@@ -11,26 +11,23 @@ namespace CodingEvents.Models
         public String Name { get; set; }
         public string Description { get; set; }
         public string ContactEmail { get; set; }
-        public string EventLocation { get; set; }
-        public int AttendeesTotal { get; set; }
-        public bool Register { get { return true; } }
-        public int Id { get; }
-        private static int nextId = 1;
+        public EventType Type { get; set; }
+        public int Id { get; set; }
+        
 
         public Event()
         {
-            Id = nextId;
-            nextId++;
+           
         }
 
-        public Event(string name, string description, string contactEmail, string eventLocation, int attendees) : this()
+        public Event(string name, string description, string contactEmail, EventType type) 
         {
             Name = name;
             Description = description;
             ContactEmail = contactEmail;
-            EventLocation = eventLocation;
-            AttendeesTotal = attendees;
             
+            Type = type;
+
         }
 
         public override string ToString()

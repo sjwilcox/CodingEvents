@@ -11,11 +11,18 @@ namespace CodingEvents.Controllers
 {
     public class EventsController : Controller
     {
+        private EventDbContext context;
+
+        public EventsController(EventDbContext dbContext)
+        {
+            context = dbContext;
+        }
         
         [HttpGet]
         public IActionResult Index()
         {
-            List<Event> events = new List<Event>(EventData.GetAll());
+            
+            List<Event> events = context.Events.ToList();
             return View(events);
         }
 
@@ -35,13 +42,13 @@ namespace CodingEvents.Controllers
                 {
                     Name = addEventViewModel.Name,
                     Description = addEventViewModel.Description,
-                    EventLocation = addEventViewModel.EventLocation,
-                    AttendeesTotal = addEventViewModel.AttendeesTotal,
-                    ContactEmail = addEventViewModel.ContactEmail
+                    ContactEmail = addEventViewModel.ContactEmail,
+                    Type = addEventViewModel.Type
                     
                 };
-                EventData.Add(newEvent);
-                return Redirect("/Events/");
+                context.Events.Add(newEvent);
+                context.SaveChanges();
+                return Redirect("/Events");
             }
             return View(addEventViewModel);
             
@@ -49,7 +56,7 @@ namespace CodingEvents.Controllers
 
         public IActionResult Delete()
         {
-            ViewBag.events = EventData.GetAll();
+            ViewBag.events = context.Events.ToList();
             return View();
         }
         [HttpPost]
@@ -57,8 +64,11 @@ namespace CodingEvents.Controllers
         {
             foreach(int eventId in eventIds)
             {
-                EventData.Remove(eventId);
+                Event theEvent = context.Events.Find(eventId);
+                context.Events.Remove(theEvent);
             }
+
+            context.SaveChanges();
 
             return Redirect("/Events");
         }
@@ -66,7 +76,7 @@ namespace CodingEvents.Controllers
         [Route("/Events/Edit/{eventId}")]
         public IActionResult Edit(int eventId)
         {
-            Event updateInfo = EventData.GetById(eventId);
+            Event updateInfo = context.Events.Find(eventId);
             ViewBag.title = "Edit Event " + updateInfo.Name + "(id = " + updateInfo.Id + ")";
             ViewBag.eventinfo = updateInfo;
             
@@ -76,13 +86,14 @@ namespace CodingEvents.Controllers
         [Route("/Events/Edit/")]
         public IActionResult SubmitEditEventFrom(int eventId,string name, string description) 
         {
-            Event updateEvent = EventData.GetById(eventId);
+            Event updateEvent = context.Events.Find(eventId);
             if(eventId == updateEvent.Id)
             {
                 updateEvent.Name = name;
                 updateEvent.Description = description;
             }
-            
+            context.SaveChanges();
+
             return Redirect("/Events/");
         }
     }

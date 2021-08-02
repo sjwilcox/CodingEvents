@@ -1,6 +1,8 @@
+using CodingEvents.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +26,9 @@ namespace CodingEvents
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            string mySqlConnect = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<EventDbContext>(options => options.UseMySql(mySqlConnect,ServerVersion.AutoDetect(mySqlConnect)));
+            //services.AddDbContext<EventDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
