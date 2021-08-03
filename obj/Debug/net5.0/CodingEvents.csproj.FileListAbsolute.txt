@@ -52,3 +52,4 @@ D:\VS Projects\CodingEvents\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource
 D:\VS Projects\CodingEvents\bin\Debug\net5.0\Humanizer.dll
 D:\VS Projects\CodingEvents\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 D:\VS Projects\CodingEvents\obj\Debug\net5.0\Razor\Views\EventCategory\Index.cshtml.g.cs
+D:\VS Projects\CodingEvents\obj\Debug\net5.0\Razor\Views\EventCategory\Create.cshtml.g.cs
